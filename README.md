@@ -24,7 +24,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-  * [Steps](#steps)
+  
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
@@ -139,6 +139,12 @@ cat id_rsa.pub
 6. Build steps 
 * Select Execute shell 
 * Enter commands of docker compose and save the configuration
+```sh
+echo "starting container"
+docker-compose down
+docker-compose up -d --no-deps --build <service_name>
+
+```
 
 [Note : To rebuild the image before starting the container. It is not sufficient to simply start and stop the old container; it must rebuild the image and then only copy new files into the container.
 
