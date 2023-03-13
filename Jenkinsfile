@@ -1,28 +1,35 @@
 pipeline {
-    agent { label 'node-agent' }
+    agent {label "Jenkinagent"}
     
     stages{
-        stage('Code'){
+      stage('code'){
             steps{
-                git url: 'https://github.com/LondheShubham153/node-todo-cicd.git', branch: 'master' 
-            }
-        }
-        stage('Build and Test'){
-            steps{
-                sh 'docker build . -t trainwithshubham/node-todo-test:latest'
-            }
-        }
-        stage('Push'){
-            steps{
-                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-        	     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                 sh 'docker push trainwithshubham/node-todo-test:latest'
+                echo "code"
                 }
             }
-        }
+
+        stage('Build'){
+            agent {
+                docker {
+                    image 'sanjanathamke/nodejs'
+                    reuseNode true
+                }
+                    
+                }
+            steps{
+                echo "building"
+                sh 'node --version'
+                }  
+            }
+            stage('Test'){
+            steps{
+                echo "Testing"
+                }
+            }
+        
         stage('Deploy'){
             steps{
-                sh "docker-compose down && docker-compose up -d"
+                sh "docker run -d sanjanathamke/nodejs"
             }
         }
     }
