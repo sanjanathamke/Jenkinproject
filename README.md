@@ -170,7 +170,8 @@ $ docker-compose up -d --no-deps --build <service_name>
 ## Usage
 
 _For more examples, please refer to the [Documentation](Link to Refer a project: 
-https://medium.com/@sanjuthamke9699day-24-task-complete-jenkins-ci-cd-project-158c10fdf55d)
+
+https://medium.com/@sanjuthamke9699/day-24-task-complete-jenkins-ci-cd-project-158c10fdf55d )
 
 
 <!-- CONTRIBUTING -->
